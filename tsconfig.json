@@ -5,6 +5,7 @@
 			// myconfig
 			"@components": ["./components"],
 			"@services": ["./services"],
+    	"@helpers": ["utility/helpers"],
 			"@interfaces": ["./interfaces/interface.ts"],
 		},
     "target": "es2020", // myconfig
