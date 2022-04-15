@@ -1,6 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "baseUrl": ".", // myconfig
+    "paths": {
+			// myconfig
+			"@components": ["./src/components"],
+			"@services": ["./src/services"],
+			"@interface": ["./src/interfaces/interface.ts"],
+		},
+    "target": "es2020", // myconfig
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
