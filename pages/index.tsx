@@ -1,8 +1,17 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { _TodoService } from '@services'
+
 
 
 const Home: NextPage = () => {
+  const dodo=()=>{
+    _TodoService.Index().subscribe({
+      next:res=>console.log(res.data),
+      error:err=>console.log(err.response)
+    })
+  }
+
   return (
     <div >
       <Head>
@@ -11,7 +20,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="text-3xl font-bold underline">
+      <h1 onClick={()=>dodo()} className="text-3xl font-bold underline">
       Hello world!
     </h1>
 
