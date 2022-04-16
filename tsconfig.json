@@ -6,6 +6,7 @@
 			"@components": ["./components"],
 			"@services": ["./services"],
     	"@helpers": ["utility/helpers"],
+      "@svgs": ["./components/svgs"],
 			"@interfaces": ["./interfaces/interface.ts"],
 		},
     "target": "es2020", // myconfig
