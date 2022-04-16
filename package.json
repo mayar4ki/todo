@@ -17,7 +17,9 @@
     "@fontsource/roboto": "^4.5.5",
     "@mui/icons-material": "^5.6.1",
     "@mui/material": "^5.6.1",
+    "@reduxjs/toolkit": "^1.8.1",
     "@types/http-proxy": "^1.17.8",
+    "@types/react-redux": "^7.1.24",
     "axios": "^0.26.1",
     "axios-observable": "^1.4.0",
     "http-proxy": "^1.18.1",
@@ -26,6 +28,7 @@
     "react-dnd": "^16.0.0",
     "react-dnd-html5-backend": "^16.0.0",
     "react-dom": "18.0.0",
+    "react-redux": "^7.2.8",
     "rxjs": "^7.5.5"
   },
   "devDependencies": {
