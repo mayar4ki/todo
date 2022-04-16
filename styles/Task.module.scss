@@ -5,7 +5,7 @@
     0px 0px 1px rgba(0, 0, 0, 0.04);
   border-radius: 16px;
   padding: 16px 0px 16px 24px;
-  @apply flex flex-row;
+  @apply flex flex-row justify-between;
 
   &_Content {
     font-family: "Roboto";
