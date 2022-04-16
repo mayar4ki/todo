@@ -1,3 +1,4 @@
+import { CreateTodo, Todo, UpdateTodo } from "@interfaces";
 import Axios, { AxiosObservable } from "axios-observable";
 
 const  {NEXT_PUBLIC_PROXY_URL} =process.env
@@ -18,24 +19,24 @@ class TodoService {
     }
 
 
-        Index(): AxiosObservable<any> {
-            return Axios.get<any>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}`);
+        Index(): AxiosObservable<Todo[]> {
+            return Axios.get<Todo[]>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}`);
         }
         
-        Show(id:string): AxiosObservable<any> {  
-              return  Axios.get<any>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}/${id}`);
+        Show(id:string): AxiosObservable<Todo> {  
+              return  Axios.get<Todo>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}/${id}`);
         }
 
-        Store(data:any): AxiosObservable<any> {
-            return Axios.post<any>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}`,data);
+        Store(data:CreateTodo): AxiosObservable<Todo> {
+            return Axios.post<Todo>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}`,data);
         }
 
-        Update(id:number,data:any): AxiosObservable<any> {
-            return Axios.put<any>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}/${id}`,data);
+        Update(id:string,data:UpdateTodo): AxiosObservable<Todo> {
+            return Axios.put<Todo>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}/${id}`,data);
         }
 
-        Destroy(id:number): AxiosObservable<any> {
-            return Axios.delete<any>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}/${id}`);
+        Destroy(id:string): AxiosObservable<Todo> {
+            return Axios.delete<Todo>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}/${id}`);
         }
 
 
