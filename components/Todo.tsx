@@ -3,8 +3,9 @@ import styles from "styles/Todo.module.scss";
 import { Task } from "@components";
 import { useDrop } from "react-dnd";
 import { DroppelNames } from "@constants";
+import { Todo as todo} from "@interfaces";
 
-export const Todo = () => {
+export const Todo = ({ todos }: { todos: todo[] }) => {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: "task",
     drop: () => ({ name: DroppelNames.TODO }),

@@ -2,8 +2,9 @@ import { Task } from "@components";
 import styles from "styles/Archive.module.scss";
 import { useDrop } from "react-dnd";
 import { DroppelNames } from "@constants";
+import { Todo } from "@interfaces";
 
-export const Archive = () => {
+export const Archive = ({ todos }: { todos: Todo[] }) => {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: "task",
     drop: () => ({ name: DroppelNames.ARCHIVE }),

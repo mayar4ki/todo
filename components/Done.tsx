@@ -2,8 +2,9 @@ import styles from "styles/Done.module.scss";
 import { Task } from "@components";
 import { useDrop } from "react-dnd";
 import { DroppelNames } from "@constants";
+import { Todo } from "@interfaces";
 
-export const Done = () => {
+export const Done = ({ todos }: { todos: Todo[] }) => {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: "task",
     drop: () => ({ name: DroppelNames.DONE }),
