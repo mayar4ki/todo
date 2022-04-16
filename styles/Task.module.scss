@@ -1,0 +1,27 @@
+.todo{
+    margin-top: 24px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 16px;
+    padding: 16px 0px 16px 24px;
+    @apply flex flex-row;
+    
+    &_Content{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    /* or 26px */
+    
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
+    
+    /* Neutral/100 */
+    
+    color: #000000;
+      }
+    
+    }
+    
