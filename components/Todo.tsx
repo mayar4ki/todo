@@ -2,7 +2,7 @@ import { AddSvg } from "@svgs";
 import styles from "styles/Todo.module.scss";
 import { Task } from "@components";
 import { useDrop } from "react-dnd";
-import { DroppelNames } from "./DroppelNames";
+import { DroppelNames } from "@constants";
 
 export const Todo = () => {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({

@@ -1,7 +1,7 @@
 import { Task } from "@components";
 import styles from "styles/Doing.module.scss";
 import { useDrop } from "react-dnd";
-import { DroppelNames } from "./DroppelNames";
+import { DroppelNames } from "@constants";
 
 export const Doing = () => {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
