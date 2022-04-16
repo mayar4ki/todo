@@ -1,0 +1,42 @@
+.doingSection{
+    width: 414px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #F8F9FA;
+    border-radius: 16px;
+    padding: 32px;
+    min-height: 150px;    
+  
+
+    &_Header{
+      padding-left: 16px;
+      border-left-width: 8px;
+      --tw-border-opacity: 1;
+      border-color: rgb(255 199 115 / var(--tw-border-opacity));
+      @apply flex flex-row justify-between 
+  }
+
+
+  &_name{
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 33px;
+    color: #313131;
+  }
+
+  &_name_ex{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.08em;
+    color: #757575;
+  }
+
+}
+
+
+
