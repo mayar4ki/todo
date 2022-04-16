@@ -4,6 +4,9 @@ import type { AppProps } from 'next/app';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material';
 
+import { store } from 'redux/store'
+import { Provider } from 'react-redux'
+
 import createEmotionCache from 'utility/createEmotionCache';
 import lightThemeOptions from 'styles/theme/lightThemeOptions';
 
@@ -29,7 +32,9 @@ const MyApp: FunctionComponent<MyAppProps> = (props) => {
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={lightTheme}>
         <CssBaseline />
+        <Provider  store={store}>
         <Component {...pageProps} />
+        </Provider>
       </ThemeProvider>
     </CacheProvider>
   );
