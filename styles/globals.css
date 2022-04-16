@@ -3,3 +3,7 @@
 @tailwind utilities;
 
 
+body{
+    font-family: "Open Sans";
+    padding-bottom: 50px;
+}
