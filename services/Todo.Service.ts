@@ -7,7 +7,6 @@ const  {NEXT_PUBLIC_PROXY_URL} =process.env
 class TodoService {
     
     private static _instance: TodoService;
-    private readonly ITEM='todos';
 
     private constructor()
     {
@@ -20,23 +19,23 @@ class TodoService {
 
 
         Index() {
-            return axios.get<Todo[]>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}`);
+            return axios.get<Todo[]>(`${NEXT_PUBLIC_PROXY_URL}/todos`);
         }
         
         Show(id:string) {  
-              return  axios.get<Todo>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}/${id}`);
+              return  axios.get<Todo>(`${NEXT_PUBLIC_PROXY_URL}/todos/${id}`);
         }
 
         Store(data:CreateTodo) {
-            return axios.post<Todo>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}`,data);
+            return axios.post<Todo>(`${NEXT_PUBLIC_PROXY_URL}/todos`,data);
         }
 
         Update(id:string,data:UpdateTodo) {
-            return axios.put<Todo>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}/${id}`,data);
+            return axios.put<Todo>(`${NEXT_PUBLIC_PROXY_URL}/todos/${id}`,data);
         }
 
         Destroy(id:string) {
-            return axios.delete<Todo>(`${NEXT_PUBLIC_PROXY_URL}/${this.ITEM}/${id}`);
+            return axios.delete<Todo>(`${NEXT_PUBLIC_PROXY_URL}/todos/${id}`);
         }
 
 

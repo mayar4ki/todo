@@ -7,6 +7,8 @@ import { ThemeProvider, CssBaseline, createTheme } from '@mui/material';
 import { store } from 'redux/store'
 import { Provider } from 'react-redux'
 
+import {  QueryClient, QueryClientProvider } from 'react-query'
+
 import createEmotionCache from 'utility/createEmotionCache';
 import lightThemeOptions from 'styles/theme/lightThemeOptions';
 
@@ -25,6 +27,9 @@ const clientSideEmotionCache = createEmotionCache();
 
 const lightTheme = createTheme(lightThemeOptions);
 
+const queryClient = new QueryClient()
+
+
 const MyApp: FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
@@ -33,7 +38,9 @@ const MyApp: FunctionComponent<MyAppProps> = (props) => {
       <ThemeProvider theme={lightTheme}>
         <CssBaseline />
         <Provider  store={store}>
+      <QueryClientProvider client={queryClient}>
         <Component {...pageProps} />
+        </QueryClientProvider>
         </Provider>
       </ThemeProvider>
     </CacheProvider>
