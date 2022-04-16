@@ -3,7 +3,7 @@ import styles from "styles/Todo.module.scss";
 import { Task } from "@components";
 import { useDrop } from "react-dnd";
 import { DroppelNames } from "@constants";
-import { Todo as todo} from "@interfaces";
+import { Todo as todo } from "@interfaces";
 
 export const Todo = ({ todos }: { todos: todo[] }) => {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
@@ -36,7 +36,9 @@ export const Todo = ({ todos }: { todos: todo[] }) => {
       </div>
 
       <div className=" flex flex-col">
-        <Task></Task>
+        {todos.map((T) => {
+          return <Task key={T._id} todo={T}></Task>;
+        })}
       </div>
     </div>
   );

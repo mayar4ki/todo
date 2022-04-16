@@ -29,8 +29,9 @@ export const Doing = ({ todos }: { todos: Todo[] }) => {
       </div>
 
       <div className=" flex flex-col">
-        <Task></Task>
-        <Task></Task>
+      {todos.map((T) => {
+          return <Task key={T._id} todo={T}></Task>;
+        })}
       </div>
     </div>
   );

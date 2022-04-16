@@ -5,8 +5,9 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import styles from "styles/Task.module.scss";
+import { Todo } from "@interfaces";
 
-export const Task = () => {
+export const Task = ({ todo }: { todo: Todo }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -18,7 +19,7 @@ export const Task = () => {
   return (
     <div className={styles.todo}>
       <div className={styles.todo_Content}>
-        Lorem, ipsum dolor sitboatis iste repudiandae 
+        {todo.title}
       </div>
       <div>
         <IconButton
