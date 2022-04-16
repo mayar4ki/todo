@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
-body{
-    font-family: "Open Sans";
-    padding-bottom: 50px;
-    zoom: 90%;
+body {
+  font-family: "Open Sans";
+  padding-bottom: 50px;
+  zoom: 90%;
 }
