@@ -3,18 +3,54 @@ import styles from "styles/Todo.module.scss";
 import { Task } from "@components";
 import { useDrop } from "react-dnd";
 import { DroppelNames } from "@constants";
-import { Todo as todo } from "@interfaces";
+import { CreateTodo, Todo as todo } from "@interfaces";
 import { useState } from "react";
 
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { _TodoService } from "@services";
+import { useMutation } from "react-query";
+import { useAppDispatch } from "redux/hooks";
+import { AddTodo } from "redux/Slices/TodosSlice";
+import CircularProgress from '@mui/material/CircularProgress';
+
+
+const schema = yup
+  .object({
+    title: yup.string().required(),
+    subject: yup.string().required(),
+  })
+  .required();
 
 export const Todo = ({ todos }: { todos: todo[] }) => {
+
+  const dispatch = useAppDispatch();
+
+  const createTodo = async (data: CreateTodo) => {
+    const response = await _TodoService.Store(data);
+    return response.data;
+  };
+
+  const { mutate, isLoading } = useMutation(createTodo, {
+    onSuccess: (data) => {reset();handleClose();dispatch(AddTodo(data))},
+  });
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<CreateTodo>({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data: CreateTodo) => mutate(data);
 
   const [open, setOpen] = useState(false);
 
@@ -55,25 +91,52 @@ export const Todo = ({ todos }: { todos: todo[] }) => {
         </div>
 
         <div>
-      <Dialog open={open} onClose={handleClose}
-            BackdropProps={{ style: { backgroundColor:'#ffffff70' , backdropFilter:'blur(1px)',padding:'39px'} }}
-      >
-        <DialogTitle>Add a New Task</DialogTitle>
-        <DialogContent>
-       
-        <input placeholder="title" className={styles.title_input} type="text" />
-        <textarea  placeholder="subject" className={styles.title_input}  rows={5} />
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            BackdropProps={{
+              style: {
+                backgroundColor: "#ffffff70",
+                backdropFilter: "blur(1px)",
+                padding: "39px",
+              },
+            }}
+          >
+            <DialogTitle>Add a New Task</DialogTitle>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <DialogContent>
+                <input
+                  {...register("title")}
+                  placeholder="title"
+                  className={`${styles.title_input} ${
+                    errors.title ? " border border-red-500 " : ""
+                  }`}
+                  type="text"
+                />
+                <p className=" my-1 text-red-500 ">{errors.title?.message}</p>
 
-  
-        </DialogContent>
-        <DialogActions>
-          <button className={styles.dialog_add_button} onClick={handleClose}>Add</button>
-        </DialogActions>
-      </Dialog>
-    </div>
+                <textarea
+                  {...register("subject")}
+                  placeholder="subject"
+                  className={`${styles.title_input} ${
+                    errors.subject ? " border border-red-500 " : ""
+                  } `}
+                  rows={5}
+                />
+                <p className=" my-1 text-red-500 ">{errors.subject?.message}</p>
+              </DialogContent>
+              <DialogActions>
+                {isLoading?<CircularProgress />:(
+    <button type="submit" className={styles.dialog_add_button}>
+    Add
+  </button>
+                )}
+              </DialogActions>
+            </form>
 
 
-
+          </Dialog>
+        </div>
       </div>
 
       <div className=" flex flex-col">

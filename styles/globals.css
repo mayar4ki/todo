@@ -13,6 +13,7 @@ body {
   border-radius: 37px;
   padding: 10px 38px ;
   background: #F8F9FA;
+  @apply w-8/12;
 }
 .MuiDialogTitle-root{
   font-family: 'Open Sans';
