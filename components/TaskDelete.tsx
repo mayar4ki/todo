@@ -44,14 +44,19 @@ export const TaskDelete = (props:{_id:string,done:Function}) => {
         <Dialog
         open={open}
         keepMounted
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+        BackdropProps={{
+          style: {
+            backgroundColor: "#ffffff70",
+            backdropFilter: "blur(1px)",
+            padding: "39px",
+          },
+        }}
       >
-        <DialogTitle id="alert-dialog-title">
+        <DialogTitle >
          Task Delete
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          <DialogContentText >
           Are you sure about that??
           </DialogContentText>
         </DialogContent>
