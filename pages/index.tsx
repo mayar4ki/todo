@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { _TodoService } from "@services";
-import { Archive, Box, Doing, Done, Todo } from "@components";
+import { Archive,  Doing, Done, Todo } from "@components";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
@@ -40,11 +40,6 @@ const Home: NextPage = () => {
       </div>
 
       <div>
-        <div style={{ overflow: "hidden", clear: "both" }}>
-          <Box name="Glass" />
-          <Box name="Banana" />
-          <Box name="Paper" />
-        </div>
       </div>
     </DndProvider>
   );
