@@ -31,7 +31,7 @@ class TodoService {
         }
 
         Update(id:string,data:UpdateTodo) {
-            return axios.put<Todo>(`${NEXT_PUBLIC_PROXY_URL}/todos/${id}`,data);
+            return axios.patch<Todo>(`${NEXT_PUBLIC_PROXY_URL}/todos/${id}`,data);
         }
 
         Destroy(id:string) {

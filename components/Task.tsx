@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { EditSvg, TrashSvg } from "@svgs";
+import { EditSvg } from "@svgs";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,8 +7,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import styles from "styles/Task.module.scss";
 import { Todo } from "@interfaces";
 import Link from "next/link";
-import { TaskDelete } from "@components";
-import { useAppDispatch } from "redux/hooks";
+import { TaskDelete,TaskEdit } from "@components";
 import { _TodoService } from "@services";
 
 export const Task = ({ todo }: { todo: Todo }) => {
@@ -57,9 +56,7 @@ export const Task = ({ todo }: { todo: Todo }) => {
           }}
         >
           <MenuItem onClick={HideIt} disableRipple>
-            <div className=" w-full flex flex-row justify-between ">
-              Edit <EditSvg />
-            </div>
+            <TaskEdit todo={todo} done={()=>handleClose()}></TaskEdit>
           </MenuItem>
 
           <MenuItem onClick={HideIt} disableRipple >

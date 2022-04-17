@@ -27,7 +27,7 @@ export const TodosSlice = createSlice({
       },
 
       UpdateTodo: (state, action: PayloadAction<Todo>) => {
-        state.Todos.map(Todo=>Todo._id===action.payload._id?action.payload:Todo)
+        state.Todos=state.Todos.map(Todo=>Todo._id==action.payload._id?action.payload:Todo)
       },
 
       SetTodos:(state, action: PayloadAction<Todo[]>)=>{
