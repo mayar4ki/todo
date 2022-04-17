@@ -1,0 +1,15 @@
+.dialog_yes_button {
+  width: 107px;
+  height: 35px;
+  background: #5eb149;
+  border-radius: 4px;
+  @apply text-white;
+}
+
+.dialog_cancel_button {
+  width: 107px;
+  height: 35px;
+  background: #e23030;
+  border-radius: 4px;
+  @apply text-white;
+}

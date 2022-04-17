@@ -7,16 +7,27 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import styles from "styles/Task.module.scss";
 import { Todo } from "@interfaces";
 import Link from "next/link";
+import { TaskDelete } from "@components";
+import { useAppDispatch } from "redux/hooks";
+import { _TodoService } from "@services";
 
 export const Task = ({ todo }: { todo: Todo }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(event.currentTarget); ShowIt();
   };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+
+  const handleClose = () => setAnchorEl(null);
+  
+  const [hidden, sethidden] = useState(false)
+  const HideIt=()=>sethidden(true)
+  const ShowIt=()=>sethidden(false)
+
+  
+ 
+
   return (
     <div className={styles.task}>
       <div className={styles.task_title}>
@@ -27,14 +38,12 @@ export const Task = ({ todo }: { todo: Todo }) => {
       <div>
         <IconButton
           id="basic-button"
-          aria-controls={open ? "basic-menu" : undefined}
           aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
         >
           <MoreVertIcon />
         </IconButton>
-        <Menu
+        <Menu className={`${hidden?' hidden':''}`}
           id="basic-menu"
           anchorEl={anchorEl}
           open={open}
@@ -47,22 +56,16 @@ export const Task = ({ todo }: { todo: Todo }) => {
             },
           }}
         >
-          <MenuItem onClick={handleClose} disableRipple>
+          <MenuItem onClick={HideIt} disableRipple>
             <div className=" w-full flex flex-row justify-between ">
-              {" "}
               Edit <EditSvg />
             </div>
           </MenuItem>
-          <MenuItem
-            onClick={handleClose}
-            disableRipple
-            className=" justify-between"
-          >
-            <div className=" w-full flex flex-row justify-between ">
-              {" "}
-              Delete <TrashSvg />
-            </div>
+
+          <MenuItem onClick={HideIt} disableRipple >
+          <TaskDelete _id={todo._id} done={()=>handleClose()} ></TaskDelete>
           </MenuItem>
+
         </Menu>
       </div>
       
