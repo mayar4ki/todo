@@ -6,6 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import styles from "styles/Task.module.scss";
 import { Todo } from "@interfaces";
+import Link from "next/link";
 
 export const Task = ({ todo }: { todo: Todo }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -17,9 +18,11 @@ export const Task = ({ todo }: { todo: Todo }) => {
     setAnchorEl(null);
   };
   return (
-    <div className={styles.todo}>
-      <div className={styles.todo_Content}>
-        {todo.title}
+    <div className={styles.task}>
+      <div className={styles.task_title}>
+      <Link href='/todo/[id]' as={`/todo/${todo._id}`}>
+  {todo.title}
+  </Link>
       </div>
       <div>
         <IconButton
@@ -62,6 +65,7 @@ export const Task = ({ todo }: { todo: Todo }) => {
           </MenuItem>
         </Menu>
       </div>
+      
     </div>
   );
 };
