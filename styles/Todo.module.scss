@@ -18,7 +18,7 @@
     background: #3da623;
     width: 41px;
     height: 41px;
-    @apply rounded-full;
+    @apply rounded-full cursor-pointer;
   }
 
   &_name {
@@ -41,3 +41,22 @@
     color: #757575;
   }
 }
+
+
+
+
+.dialog_add_button{
+  width: 107px;
+height: 35px;
+background: #5EB149;
+border-radius: 4px;
+@apply text-white;
+}
+
+.title_input{
+  background: #FFFFFF;
+  border-radius: 7px;
+  margin: 8px 0px;
+  @apply w-full px-2 py-1 placeholder-slate-400 focus:outline-none ; 
+}
+

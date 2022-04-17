@@ -18,6 +18,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import '../styles/globals.css';
+import { Layout } from '@components';
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -34,12 +35,15 @@ const MyApp: FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (
+   
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={lightTheme}>
         <CssBaseline />
         <Provider  store={store}>
       <QueryClientProvider client={queryClient}>
+      <Layout>
         <Component {...pageProps} />
+        </Layout>
         </QueryClientProvider>
         </Provider>
       </ThemeProvider>
