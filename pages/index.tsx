@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { _TodoService } from "@services";
-import styles from "styles/Home.module.scss";
 import { Archive, Box, Doing, Done, Todo } from "@components";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -21,16 +20,12 @@ const Home: NextPage = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className=" pt-28">
+      <div>
         <Head>
           <title> TODO LIST </title>
           <meta name="description" content="a good todo list" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-
-        <h1 className={`${styles.todoTitle} w-full text-center pb-10 `}>
-          TODO LIST
-        </h1>
 
         <div
           className="
