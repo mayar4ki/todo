@@ -3,8 +3,9 @@ import styles from "styles/Doing.module.scss";
 import { useDrop } from "react-dnd";
 import { DroppelNames } from "@constants";
 import { Todo } from "@interfaces";
+import CircularProgress from "@mui/material/CircularProgress";
 
-export const Doing = ({ todos }: { todos: Todo[] }) => {
+export const Doing = ({  todos,  Loading }: {  todos: Todo[];  Loading: boolean;}) => {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: "task",
     drop: () => ({ name: DroppelNames.DOING }),
@@ -28,11 +29,17 @@ export const Doing = ({ todos }: { todos: Todo[] }) => {
         </div>
       </div>
 
-      <div className=" flex flex-col">
-      {todos.map((T) => {
-          return <Task key={T._id} todo={T}></Task>;
-        })}
-      </div>
+      {Loading ? (
+        <div className=" w-full mt-10 text-center">
+          <CircularProgress />
+        </div>
+      ) : (
+        <div className=" flex flex-col">
+          {todos.map((T) => {
+            return <Task key={T._id} todo={T}></Task>;
+          })}
+        </div>
+      )}
     </div>
   );
 };

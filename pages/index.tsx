@@ -32,10 +32,10 @@ const Home: NextPage = () => {
       flex flex-row items-start justify-between
         px-5 space-x-10"
         >
-          <Todo todos={Todos.filter((t) => t.status == "todo")} />
-          <Done todos={Todos.filter((t) => t.status == "done")} />
-          <Doing todos={Todos.filter((t) => t.status == "doing")} />
-          <Archive todos={Todos.filter((t) => t.status == "archive")} />
+          <Todo todos={Todos.filter((t) => t.status == "todo")} Loading={isLoading} />
+          <Done todos={Todos.filter((t) => t.status == "done")} Loading={isLoading} />
+          <Doing todos={Todos.filter((t) => t.status == "doing")} Loading={isLoading} />
+          <Archive todos={Todos.filter((t) => t.status == "archive")} Loading={isLoading} />
         </div>
       </div>
 

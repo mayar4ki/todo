@@ -3,8 +3,9 @@ import { Task } from "@components";
 import { useDrop } from "react-dnd";
 import { DroppelNames } from "@constants";
 import { Todo } from "@interfaces";
+import CircularProgress from "@mui/material/CircularProgress";
 
-export const Done = ({ todos }: { todos: Todo[] }) => {
+export const Done = ({  todos,  Loading }: {  todos: Todo[];  Loading: boolean;}) => {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: "task",
     drop: () => ({ name: DroppelNames.DONE }),
@@ -27,11 +28,17 @@ export const Done = ({ todos }: { todos: Todo[] }) => {
         </div>
       </div>
 
-      <div className=" flex flex-col">
-      {todos.map((T) => {
-          return <Task key={T._id} todo={T}></Task>;
-        })}
-      </div>
+      {Loading ? (
+        <div className=" w-full mt-10 text-center">
+          <CircularProgress />
+        </div>
+      ) : (
+        <div className=" flex flex-col">
+          {todos.map((T) => {
+            return <Task key={T._id} todo={T}></Task>;
+          })}
+        </div>
+      )}
     </div>
   );
 };

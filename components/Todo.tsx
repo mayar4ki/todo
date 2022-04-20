@@ -18,8 +18,7 @@ import { _TodoService } from "@services";
 import { useMutation } from "react-query";
 import { useAppDispatch } from "redux/hooks";
 import { AddTodo } from "redux/Slices/TodosSlice";
-import CircularProgress from '@mui/material/CircularProgress';
-
+import CircularProgress from "@mui/material/CircularProgress";
 
 const schema = yup
   .object({
@@ -28,8 +27,7 @@ const schema = yup
   })
   .required();
 
-export const Todo = ({ todos }: { todos: todo[] }) => {
-
+export const Todo = ({  todos,  Loading }: {  todos: todo[];  Loading: boolean;}) => {
   const dispatch = useAppDispatch();
 
   const createTodo = async (data: CreateTodo) => {
@@ -38,7 +36,11 @@ export const Todo = ({ todos }: { todos: todo[] }) => {
   };
 
   const { mutate, isLoading } = useMutation(createTodo, {
-    onSuccess: (data) => {reset();handleClose();dispatch(AddTodo(data))},
+    onSuccess: (data) => {
+      reset();
+      handleClose();
+      dispatch(AddTodo(data));
+    },
   });
 
   const {
@@ -126,24 +128,31 @@ export const Todo = ({ todos }: { todos: todo[] }) => {
                 <p className=" my-1 text-red-500 ">{errors.subject?.message}</p>
               </DialogContent>
               <DialogActions>
-                {isLoading?<CircularProgress />:(
-    <button type="submit" className={styles.dialog_add_button}>
-    Add
-  </button>
+                {isLoading ? (
+                  <CircularProgress />
+                ) : (
+                  <button type="submit" className={styles.dialog_add_button}>
+                    Add
+                  </button>
                 )}
               </DialogActions>
             </form>
-
-
           </Dialog>
         </div>
       </div>
 
-      <div className=" flex flex-col">
-        {todos.map((T) => {
-          return <Task key={T._id} todo={T}></Task>;
-        })}
-      </div>
+      {Loading ? (
+        <div className=" w-full mt-10 text-center">
+          <CircularProgress />
+        </div>
+      ) : (
+        <div className=" flex flex-col">
+          {todos.map((T) => {
+            return <Task key={T._id} todo={T}></Task>;
+          })}
+        </div>
+      )}
+
     </div>
   );
 };
