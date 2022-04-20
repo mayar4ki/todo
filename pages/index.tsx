@@ -27,15 +27,18 @@ const Home: NextPage = () => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
+        {/* flex flex-row items-start justify-between
+        px-5 space-x-10 */}
         <div
-          className="
-      flex flex-row items-start justify-between
-        px-5 space-x-10"
+          className=" flex flex-col items-center space-y-7 md:flex md:flex-row md:flex-wrap md:space-x-4 
+          xl:flex xl:felx-row xl:flex-nowrap xl:px-5 xl:items-start xl:space-x-10
+          "
         >
           <Todo todos={Todos.filter((t) => t.status == "todo")} Loading={isLoading} />
           <Done todos={Todos.filter((t) => t.status == "done")} Loading={isLoading} />
           <Doing todos={Todos.filter((t) => t.status == "doing")} Loading={isLoading} />
           <Archive todos={Todos.filter((t) => t.status == "archive")} Loading={isLoading} />
+
         </div>
       </div>
 

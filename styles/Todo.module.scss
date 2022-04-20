@@ -5,6 +5,7 @@
   border-radius: 16px;
   padding: 32px;
   min-height: 150px;
+  @apply ml-0 md:ml-3 xl:ml-0 xl:mt-6;
 
   &_Header {
     padding-left: 16px;

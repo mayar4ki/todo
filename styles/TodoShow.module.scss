@@ -2,7 +2,6 @@ $width: 1176px;
 
 .todo {
   &_Container {
-    width: #{$width};
     padding: 42px;
 
     /* Neutral/400 */
@@ -10,6 +9,8 @@ $width: 1176px;
     background: #f8f9fa;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 16px;
+    @apply w-11/12 md:w-10/12 lg:w-8/12 xl:w-[73rem];
+
 
     .title {
       font-style: normal;
@@ -46,7 +47,6 @@ $width: 1176px;
   }
 
   &_Details {
-    width: #{$width};
     font-style: normal;
     font-weight: 700;
     font-size: 48px;
@@ -63,8 +63,8 @@ $width: 1176px;
 }
 
 .backSection {
-  width: #{$width};
   @apply text-right;
+  @apply w-11/12 md:w-10/12 lg:w-8/12 xl:w-[73rem];
 
   .button {
     padding: 10px;
