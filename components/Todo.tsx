@@ -27,7 +27,7 @@ const schema = yup
   })
   .required();
 
-export const Todo = ({  todos,  Loading }: {  todos: todo[];  Loading: boolean;}) => {
+export const Todo = ({  todos }: {  todos: todo[]; }) => {
   const dispatch = useAppDispatch();
 
   const createTodo = async (data: CreateTodo) => {
@@ -141,17 +141,13 @@ export const Todo = ({  todos,  Loading }: {  todos: todo[];  Loading: boolean;}
         </div>
       </div>
 
-      {Loading ? (
-        <div className=" w-full mt-10 text-center">
-          <CircularProgress />
-        </div>
-      ) : (
+     
         <div className=" flex flex-col">
           {todos.map((T) => {
             return <Task key={T._id} todo={T}></Task>;
           })}
         </div>
-      )}
+    
 
     </div>
   );

@@ -5,7 +5,7 @@ import { DroppelNames } from "@constants";
 import { Todo } from "@interfaces";
 import CircularProgress from "@mui/material/CircularProgress";
 
-export const Done = ({  todos,  Loading }: {  todos: Todo[];  Loading: boolean;}) => {
+export const Done = ({  todos }: {  todos: Todo[]; }) => {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: "task",
     drop: () => ({ name: DroppelNames.DONE }),
@@ -28,17 +28,13 @@ export const Done = ({  todos,  Loading }: {  todos: Todo[];  Loading: boolean;}
         </div>
       </div>
 
-      {Loading ? (
-        <div className=" w-full mt-10 text-center">
-          <CircularProgress />
-        </div>
-      ) : (
+ 
         <div className=" flex flex-col">
           {todos.map((T) => {
             return <Task key={T._id} todo={T}></Task>;
           })}
         </div>
-      )}
+    
     </div>
   );
 };
