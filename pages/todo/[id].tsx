@@ -59,6 +59,14 @@ const TodoShow = ({ todo }: { todo: Todo }) => {
   );
 };
 
+// export async function getServerSideProps(context: any) {
+//   const { data } = await _TodoService.Show(context.params.id);
+
+//   return {
+//     props: { todo: data }
+//   };
+// }
+
 export async function getStaticProps(context: any) {
   const { data } = await _TodoService.Show(context.params.id);
 
