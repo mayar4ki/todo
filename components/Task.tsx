@@ -72,9 +72,19 @@ switch (name) {
     return response.data;
   };
 
-  const { mutate, isLoading } = useMutation(updateTodo, {
-    onSuccess: (data) =>{ dispatch(_UpdateTodo(data));}
+  const { mutate, isLoading } = useMutation(updateTodo,
+     {
+      onMutate: variables => {
+        variables.status?dispatch(_UpdateTodo({...todo,status:variables.status})):'';     
+        return todo.status
+      },
+    onSuccess: (data) =>{},
+    onError:(error, variables, context)=>{
+      context?dispatch(_UpdateTodo({...todo,status:context})):'';
+    }
   });
+
+
 
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
