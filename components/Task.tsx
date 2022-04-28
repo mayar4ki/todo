@@ -5,7 +5,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import styles from "styles/Task.module.scss";
-import { Todo, UpdateTodo } from "@interfaces";
+import { Todo, UpdateTodo,status as _status } from "@interfaces";
 import Link from "next/link";
 import { TaskDelete,TaskEdit } from "@components";
 import { _TodoService } from "@services";
@@ -18,6 +18,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 export const Task = ({ todo }: { todo: Todo }) => {
 
   const dispatch = useAppDispatch();
+
 
   type dropResultName='TODO'|'DOING'|'DONE'|'ARCHIVE';
 
@@ -75,12 +76,18 @@ switch (name) {
   const { mutate, isLoading } = useMutation(updateTodo,
      {
       onMutate: variables => {
-        variables.status?dispatch(_UpdateTodo({...todo,status:variables.status})):'';     
+        if( variables.status){
+          dispatch(_UpdateTodo({...todo,status:variables.status}))
+        }  
         return todo.status
       },
     onSuccess: (data) =>{},
     onError:(error, variables, context)=>{
-      context?dispatch(_UpdateTodo({...todo,status:context})):'';
+      if(context){
+        const old_status= context as _status;
+        dispatch(_UpdateTodo({...todo,status:old_status}))
+      }
+   
     }
   });
 
