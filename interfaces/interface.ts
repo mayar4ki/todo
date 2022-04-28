@@ -1,6 +1,6 @@
 
 
-type status='todo' | 'doing' | 'done' | 'archive';
+export type status='todo' | 'doing' | 'done' | 'archive';
 
 export interface Todo  {
     _id: string;
