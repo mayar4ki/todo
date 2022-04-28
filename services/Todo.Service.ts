@@ -1,6 +1,8 @@
 import { CreateTodo, Todo, UpdateTodo } from "@interfaces";
 import axios from "axios";
 
+const BACK_END_BASE_URL = process.env.BACK_END_BASE_URL;
+
 const  {NEXT_PUBLIC_PROXY_URL} =process.env
 
 
@@ -19,11 +21,11 @@ class TodoService {
 
 
         Index() {
-            return axios.get<Todo[]>(`${NEXT_PUBLIC_PROXY_URL}/todos`);
+            return axios.get<Todo[]>(`${BACK_END_BASE_URL}/todos?key=ois-006`);
         }
         
         Show(id:string) {  
-              return  axios.get<Todo>(`${NEXT_PUBLIC_PROXY_URL}/todos/${id}`);
+              return  axios.get<Todo>(`${BACK_END_BASE_URL}/todos/${id}?key=ois-006`);
         }
 
         Store(data:CreateTodo) {
